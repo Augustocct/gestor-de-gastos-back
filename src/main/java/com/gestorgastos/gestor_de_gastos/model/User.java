@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
+import com.gestorgastos.gestor_de_gastos.model.enums.Role;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -20,6 +22,10 @@ public class User {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false)
+    private Role role;
 
     @Column(name = "created_at", nullable = false)
     private Date created_at;
@@ -54,6 +60,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public Date getCreated_at() {
